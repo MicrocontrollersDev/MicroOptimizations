@@ -1,6 +1,5 @@
 package dev.microcontrollers.microoptimizations.helpers;
 
-import dev.microcontrollers.microoptimizations.FeatherOpt;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MathHelper;
@@ -58,7 +57,6 @@ public class PooledMutableBlockPos extends ExtendedMutableBlockPos implements Au
     @Override
     public PooledMutableBlockPos set(int x, int y, int z) {
         if (this.released) {
-            FeatherOpt.LOGGER.error("PooledMutableBlockPosition modified after it was released.", new Throwable());
             this.released = false;
         }
 

@@ -1,6 +1,5 @@
 package dev.microcontrollers.microoptimizations.helpers;
 
-import dev.microcontrollers.microoptimizations.FeatherOpt;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;
@@ -58,7 +57,6 @@ public class AssociatedMutableBlockPos extends ExtendedMutableBlockPos implement
     @Override
     public AssociatedMutableBlockPos set(int x, int y, int z) {
         if (this.released) {
-            FeatherOpt.LOGGER.error("AssociatedBlockPos modified after it was released.", new Throwable());
             this.released = false;
         }
 
