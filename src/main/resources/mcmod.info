@@ -1,14 +1,15 @@
 [
   {
-    "modid": "featheropt",
-    "name": "FeatherOpt",
-    "description": "Feather Optimization",
-    "version": "1.0.0-SNAPSHOT",
+    "modid": "microoptimizations",
+    "name": "MicroOptimizations",
+    "description": "Optimizations from Feather",
+    "version": "1.0.0",
     "mcversion": "1.8.9",
-    "url": "https://www.feathermc.com",
+    "url": "https://modrinth.com/mod/microoptimizations",
     "updateUrl": "",
     "authorList": [
-      "FeatherMC"
+      "FeatherMC",
+      "Microcontrollers"
     ],
     "screenshots": [],
     "dependencies": []

@@ -1,0 +1,22 @@
+{
+  "package": "dev.microcontrollers.microoptimizations.mixin",
+  "refmap": "mixins.${modid}.refmap.json",
+  "minVersion": "0.7",
+  "compatibilityLevel": "JAVA_8",
+  "client": [
+    "block.MixinBlockState_FasterLookup",
+    "block.MixinPropertyBool_ConstantAllowedValues",
+    "block.MixinPropertyHelper_CacheHashcode",
+    "block.MixinPropertyInteger_CacheHashcode",
+    "entity.MixinBaseAttribute_CacheHashcode",
+    "entity.MixinEntityList_CacheConstructors",
+    "forge.MixinForgeBlockStateV1_ReduceTransformationAllocations",
+    "renderer.MixinBlockModelRenderer_BlockPosPool",
+    "renderer.MixinRenderGlobal_BlockPosPool"
+  ],
+  "mixins": [
+    "block.MixinBlockLiquid_BlockPosPool",
+    "entity.MixinEntity_BlockPosPool",
+    "world.MixinWorld_BlockPosPool"
+  ]
+}
