@@ -103,7 +103,7 @@ public class MixinBlockModelRenderer_BlockPosPool {
             at = @At(value = "INVOKE",
                     target = "Lnet/minecraft/world/IBlockAccess;getBlockState(Lnet/minecraft/util/BlockPos;)Lnet/minecraft/block/state/IBlockState;"),
             slice = @Slice(
-                    from = @At(value = "INVOKE", target = "Lnet/minecraft/world/IBlockAccess;getBlockState(Lnet/minecraft/util/BlockPos;)Lnet/minecraft/block/state/IBlockState;", ordinal = 6, shift = At.Shift.BEFORE),
+                    from = @At(value = "INVOKE", target = "Lnet/minecraft/world/IBlockAccess;getBlockState(Lnet/minecraft/util/BlockPos;)Lnet/minecraft/block/state/IBlockState;", ordinal = 6),
                     to = @At(value = "INVOKE", target = "Lnet/minecraft/world/IBlockAccess;getBlockState(Lnet/minecraft/util/BlockPos;)Lnet/minecraft/block/state/IBlockState;", ordinal = 7, shift = At.Shift.AFTER)
             )
     )
@@ -130,7 +130,7 @@ public class MixinBlockModelRenderer_BlockPosPool {
             method = "updateVertexBrightness",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/block/Block;getMixedBrightnessForBlock(Lnet/minecraft/world/IBlockAccess;Lnet/minecraft/util/BlockPos;)I", ordinal = 0),
             slice = @Slice(
-                    from = @At(value = "INVOKE", target = "Lnet/minecraft/block/Block;getAmbientOcclusionLightValue()F", ordinal = 5, shift = At.Shift.BEFORE)
+                    from = @At(value = "INVOKE", target = "Lnet/minecraft/block/Block;getAmbientOcclusionLightValue()F", ordinal = 5)
             )
     )
     public int microoptimizations$getMixedBrightnessForBlock$releaseSecond(Block instance, IBlockAccess blockAccess, BlockPos companion) {
@@ -143,7 +143,7 @@ public class MixinBlockModelRenderer_BlockPosPool {
             method = "updateVertexBrightness",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/block/Block;getMixedBrightnessForBlock(Lnet/minecraft/world/IBlockAccess;Lnet/minecraft/util/BlockPos;)I", ordinal = 0),
             slice = @Slice(
-                    from = @At(value = "INVOKE", target = "Lnet/minecraft/block/Block;getAmbientOcclusionLightValue()F", ordinal = 7, shift = At.Shift.BEFORE)
+                    from = @At(value = "INVOKE", target = "Lnet/minecraft/block/Block;getAmbientOcclusionLightValue()F", ordinal = 7)
             )
     )
     public int microoptimizations$getMixedBrightnessForBlock$releaseThird(Block instance, IBlockAccess p_getMixedBrightnessForBlock_1_, BlockPos associatedBlockPos) {

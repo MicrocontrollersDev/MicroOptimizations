@@ -20,47 +20,31 @@ public class MixinRenderGlobal_BlockPosPool {
     @Shadow
     private int renderEntitiesStartupCounter;
     @Unique
-    private PooledMutableBlockPos featherOpt$blockPos;
+    private PooledMutableBlockPos microoptimizations$blockPos;
     @Unique
-    private int featherOpt$originalRenderEntitiesStartupCounter;
+    private int microoptimizations$originalRenderEntitiesStartupCounter;
 
-    @Inject(
-            method = "renderEntities",
-            at = @At("HEAD")
-    )
-    public void featherOpt$catchRenderEntitiesStartupCounter(Entity p_renderEntities_1_, ICamera p_renderEntities_2_, float p_renderEntities_3_, CallbackInfo ci) {
-        this.featherOpt$originalRenderEntitiesStartupCounter = this.renderEntitiesStartupCounter;
+    @Inject(method = "renderEntities", at = @At("HEAD"))
+    public void microoptimizations$catchRenderEntitiesStartupCounter(Entity p_renderEntities_1_, ICamera p_renderEntities_2_, float p_renderEntities_3_, CallbackInfo ci) {
+        this.microoptimizations$originalRenderEntitiesStartupCounter = this.renderEntitiesStartupCounter;
     }
 
-    @Inject(
-            method = "renderEntities",
-            at = @At(value = "CONSTANT", args = "stringValue=entities", ordinal = 0)
-    )
-    public void featherOpt$getFromPool(Entity p_renderEntities_1_, ICamera p_renderEntities_2_, float p_renderEntities_3_, CallbackInfo ci) {
-        this.featherOpt$blockPos = PooledMutableBlockPos.get();
+    @Inject(method = "renderEntities", at = @At(value = "CONSTANT", args = "stringValue=entities", ordinal = 0))
+    public void microoptimizations$getFromPool(Entity p_renderEntities_1_, ICamera p_renderEntities_2_, float p_renderEntities_3_, CallbackInfo ci) {
+        this.microoptimizations$blockPos = PooledMutableBlockPos.get();
     }
 
-    @Redirect(
-            method = "renderEntities",
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/util/BlockPos;offset(Lnet/minecraft/util/EnumFacing;)Lnet/minecraft/util/BlockPos;"),
-            slice = @Slice(
-                    from = @At(value = "CONSTANT", args = "stringValue=entities", ordinal = 0)
-            )
+    @Redirect(method = "renderEntities", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/BlockPos;offset(Lnet/minecraft/util/EnumFacing;)Lnet/minecraft/util/BlockPos;"),
+            slice = @Slice(from = @At(value = "CONSTANT", args = "stringValue=entities", ordinal = 0))
     )
-    public BlockPos featherOpt$usedPooledBlockPos(BlockPos instance, EnumFacing direction) {
-        return featherOpt$blockPos.move(direction);
+    public BlockPos microoptimizations$usedPooledBlockPos(BlockPos instance, EnumFacing direction) {
+        return microoptimizations$blockPos.move(direction);
     }
 
-    @Inject(
-            method = "renderEntities",
-            at = @At("RETURN"),
-            slice = @Slice(
-                    from = @At(value = "CONSTANT", args = "stringValue=entities", ordinal = 0)
-            )
-    )
-    public void featherOpt$release(Entity p_renderEntities_1_, ICamera p_renderEntities_2_, float p_renderEntities_3_, CallbackInfo ci) {
-        if (featherOpt$originalRenderEntitiesStartupCounter <= 0) {
-            this.featherOpt$blockPos.release();
+    @Inject(method = "renderEntities", at = @At("RETURN"), slice = @Slice(from = @At(value = "CONSTANT", args = "stringValue=entities", ordinal = 0)))
+    public void microoptimizations$release(Entity p_renderEntities_1_, ICamera p_renderEntities_2_, float p_renderEntities_3_, CallbackInfo ci) {
+        if (microoptimizations$originalRenderEntitiesStartupCounter <= 0) {
+            this.microoptimizations$blockPos.release();
         }
     }
 }
